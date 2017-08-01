@@ -15,6 +15,21 @@ describe("Thermostat", function() {
       thermostat.increaseTemp(1);
       expect(thermostat.getTemp()).toBeGreaterThan(20);
     });
+
+    describe("power saving on", function() {
+      it("doesn't increase the temperature above the maximum", function() {
+        thermostat.increaseTemp(6);
+        expect(thermostat.getTemp()).toBe(25);
+      });
+    });
+
+    describe("power saving off", function() {
+      it("doesn't increase the temperature above the maximum", function() {
+        thermostat.powerSaveToggle();
+        thermostat.increaseTemp(13);
+        expect(thermostat.getTemp()).toBe(32);
+      });
+    });
   });
 
   describe("#descreaseTemp", function() {

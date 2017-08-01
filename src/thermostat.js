@@ -1,14 +1,28 @@
 function Thermostat() {
-  this._temperature = 20;
-  this._minimumTemp = 10;
+  this.DEFAULTTEMP = 20;
+  this.MINIMUMTEMP = 10;
+
+  this._temperature = this.DEFAULTTEMP;
+  this._minimumTemp = this.MINIMUMTEMP;
+  this._powersaving = true;
+  this._maximumTemp = this._powersaving === true ? 25 : 32;
 };
 
 Thermostat.prototype.getTemp = function() {
   return this._temperature;
 };
 
+Thermostat.prototype.powerSaveToggle = function() {
+  this._powersaving = this._powersaving === true ? false : true;
+  this._maximumTemp = this._powersaving === true ? 25 : 32;
+};
+
 Thermostat.prototype.increaseTemp = function(increase) {
-  this._temperature += increase;
+  if((this._temperature + increase) > this._maximumTemp) {
+    this._temperature = this._maximumTemp;
+  } else {
+    this._temperature += increase;
+  }
 };
 
 Thermostat.prototype.decreaseTemp = function(decrease) {
