@@ -44,6 +44,20 @@ describe("Thermostat", function() {
     });
   });
 
+  describe("#resetTemp", function() {
+    it("resets the temperature to the default value", function(){
+      thermostat.increaseTemp(5);
+      thermostat.resetTemp();
+      expect(thermostat.getTemp()).toBe(20);
+    });
+  });
+
+  describe("getEnergyUsage", function() {
+    it("returns the current energy usage", function() {
+      expect(thermostat.getEnergyUsage()).toBe("medium-usage");
+    });
+  });
+
 
 
 
