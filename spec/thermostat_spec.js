@@ -18,11 +18,17 @@ describe("Thermostat", function() {
   });
 
   describe("#descreaseTemp", function() {
-    it("decreases the teperature", function() {
+    it("decreases the temperature", function() {
       thermostat.decreaseTemp(1);
       expect(thermostat.getTemp()).toBe(19);
     });
+
+    it("doesn't decrease the temperature below the minimum", function() {
+      thermostat.decreaseTemp(11);
+      expect(thermostat.getTemp()).toBe(10);
+    });
   });
+
 
 
 
