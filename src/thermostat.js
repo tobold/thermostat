@@ -24,15 +24,15 @@ Thermostat.prototype.increaseTemp = function(increase) {
 };
 
 Thermostat.prototype.decreaseTemp = function(decrease) {
-  if((this._temperature - decrease) < this._minimumTemp) {
-    this._temperature = this._minimumTemp;
+  if((this._temperature - decrease) < this.MINIMUMTEMP) {
+    this._temperature = this.MINIMUMTEMP;
   } else {
     this._temperature -= decrease;
   }
 };
 
 Thermostat.prototype.resetTemp = function() {
-  this._temperature = this._defaultTemp;
+  this._temperature = this.DEFAULTTEMP;
 };
 
 Thermostat.prototype.getEnergyUsage = function () {
