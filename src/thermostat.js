@@ -1,7 +1,7 @@
 function Thermostat() {
-  this._defaultTemp = 20;
-  this._temperature = this._defaultTemp;
-  this._minimumTemp = 10;
+  this.DEFAULTTEMP = 20;
+  this._temperature = this.DEFAULTTEMP;
+  this.MINIMUMTEMP = 10;
   this._powersaving = true;
   this._maximumTemp = this._powersaving === true ? 25 : 32;
 };
