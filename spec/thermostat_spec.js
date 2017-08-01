@@ -17,6 +17,13 @@ describe("Thermostat", function() {
     });
   });
 
+  describe("#descreaseTemp", function() {
+    it("decreases the teperature", function() {
+      thermostat.decreaseTemp(1);
+      expect(thermostat.getTemp()).toBe(19);
+    });
+  });
+
 
 
 
