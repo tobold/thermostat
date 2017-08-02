@@ -13,6 +13,9 @@ Thermostat.prototype.getTemp = function() {
 Thermostat.prototype.powerSaveToggle = function() {
   this._powersaving = this._powersaving === true ? false : true;
   this._maximumTemp = this._powersaving === true ? 25 : 32;
+  if(this._temperature > this._maximumTemp) {
+    this._temperature = this._maximumTemp
+  };
 };
 
 Thermostat.prototype.increaseTemp = function(increase) {
