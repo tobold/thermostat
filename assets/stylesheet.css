@@ -1,0 +1,100 @@
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 1%;
+}
+
+.curved {
+  border-radius: 50px;
+}
+
+button:focus {outline:0;}
+
+.red { background-color: #E2231A;
+}
+
+.green { background-color: #41EAD4;
+}
+
+.centre {
+  text-align: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 128px;
+  height: 64px;
+}
+
+.centre {}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 5;
+  left: 0;
+  right: 0;
+  bottom: -5;
+  background-color: grey;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 56px;
+  width: 56px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #63BEF3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(64px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    width: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}

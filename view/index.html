@@ -1,30 +1,58 @@
+<meta charset="utf-8">
+
 <html>
   <head>
     <title>Thermostat</title>
+    <link rel="stylesheet" href="../assets/simple-grid.css">
+    <link rel="stylesheet" href="../assets/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+
   </head>
   <body>
-    <div id='main'>
-      <h1 id='tempdisplay'></h1>
-      <div id='increasetempbutton'>
-        <button value="increaseTemp">UP</button>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 centre">
+          <h1 class="curved" id='tempdisplay'></h1>
+        </div>
       </div>
-      <div id='decreasetempbutton'>
-        <button value="decreaseTemp">DOWN</button>
-      </div>
-      <div id='resettempbutton'>
-        <button value="resetTemp">RESET</button>
-      </div>
-      <div id='powersavetogglebutton'>
-        <button value="powerSaveToggle">POWER SAVE</button>
-      </div>
-      <div id='powersavetoggledisplay'>
-      </div>
-      <div id='energyusagedisplay'>
-      </div >
-      <br>
-      <div id='temperature'>
-      </div>
-      <div id='weather'>
+      <div class="row">
+        <div class="col-6 centre">
+          <div>
+            <button id='increasetempbutton' class="button curved" value="increaseTemp">⇡</button>
+          </div>
+          <div>
+            <button id='decreasetempbutton' class="button curved" value="decreaseTemp">⇣</button>
+          </div>
+          <br>
+          <div>
+            <button id='resettempbutton' class="button curved" value="resetTemp">RESET</button>
+          </div>
+          <div class="centre">
+            <h2>Power save mode</h2>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span id="powersavetogglebutton" class="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-6">
+          <select class="select-style" id="cityselector">
+            <option value="London">London</option>
+            <option value="Paris">Paris</option>
+            <option value="Amsterdam">Amsterdam</option>
+            <option value="Reykjavik">Reykjavik</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Madrid">Madrid</option>
+            <option value="Rome">Rome</option>
+          </select>
+          <h4 id='temperature'>
+          </h4>
+          <div id='weather'>
+          </div>
+          <div id='weatherpicture'>
+          </div>
+        </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
