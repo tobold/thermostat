@@ -1,5 +1,7 @@
+
 $(document).ready(function() {
   var thermostat = new Thermostat();
+
   var powerusagehash = {  'low-usage' : '#9BC53D',
                           'medium-usage' : '#FDE74C',
                           'high-usage' : '#E55934'};
@@ -12,10 +14,9 @@ $(document).ready(function() {
     $('#tempdisplay').text(thermostat.getTemp());
   }
 
-  function sentPost() {
+  function sendPost() {
     var json = JSON.stringify({ temp: thermostat.getTemp(), city: $('#cityselector').find(":selected").text()});
-    console.log(json)
-    $.post('localhost:9292', json)
+    $.post('http://localhost:9292', json)
   }
 
   function updateWeather() {
@@ -28,36 +29,44 @@ $(document).ready(function() {
       });
   }
 
+  $.get('http://localhost:9292', function(response) {
+    var obj = JSON.parse(response)
+    thermostat._temperature = obj.temp
+    $('#cityselector').val(obj.city)
+    updateDisplays();
+    // $('#cityselector').text(obj.city);
+  });
+
   updateDisplays();
   updateWeather();
 
   $('#increasetempbutton').click(function() {
     thermostat.increaseTemp(1);
     updateDisplays();
-    sentPost()
+    sendPost()
   });
 
   $('#decreasetempbutton').click(function() {
     thermostat.decreaseTemp(1);
     updateDisplays();
-    sentPost()
+    sendPost()
   });
 
   $('#resettempbutton').click(function() {
     thermostat.resetTemp();
     updateDisplays();
-    sentPost()
+    sendPost()
   });
 
   $(document).on('click','#powersavetogglebutton', function() {
     thermostat.powerSaveToggle();
     updateDisplays();
-    sentPost()
+    sendPost()
   });
 
   $('#cityselector').change(function() {
     $('#location').text($('#cityselector').find(":selected").text());
     updateWeather();
-    sentPost()
+    sendPost()
   });
 })

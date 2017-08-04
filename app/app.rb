@@ -15,6 +15,12 @@ class Thermostat_controller < Sinatra::Base
     headers 'Access-Control-Allow-Origin' => '*'
     js = request.body.read
     my_hash = JSON.parse(js)
-    p Thermostat.get(1).update(:temperature => my_hash['temp'], :city => my_hash['city'])
+    Thermostat.get(1).update(:temperature => my_hash['temp'], :city => my_hash['city'])
+  end
+
+  get '/' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    thermostat = Thermostat.get(1)
+    return JSON.generate({ temp: thermostat.temperature, city: thermostat.city })
   end
 end
